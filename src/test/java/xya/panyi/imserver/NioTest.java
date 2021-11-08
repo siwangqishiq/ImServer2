@@ -7,6 +7,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -35,7 +36,9 @@ public class NioTest {
                             ServerSocketChannel ssc = (ServerSocketChannel)selectionKey.channel();
                             final SocketChannel clientChannel = ssc.accept();
 
+                            clientChannel.configureBlocking(false);
                             System.out.println("client Ip = " + clientChannel.getRemoteAddress().toString());
+                            clientChannel.write(Charset.defaultCharset().encode("Hello Welocome"));
                             clientChannel.close();
                         }
                     }//end while
