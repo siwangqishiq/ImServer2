@@ -2,7 +2,7 @@ package xyz.panyi.imserver.service;
 
 import org.springframework.stereotype.Component;
 import xyz.panyi.imserver.model.Account;
-import xyz.panyi.imserver.model.LoginResp;
+import xyz.panyi.imserver.model.LoginHttpResp;
 import xyz.panyi.imserver.session.TokenHelper;
 
 import java.util.HashMap;
@@ -33,8 +33,8 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public LoginResp buildLoginResp(Account account) {
-        final LoginResp result = new LoginResp();
+    public LoginHttpResp buildLoginResp(Account account) {
+        final LoginHttpResp result = new LoginHttpResp();
         result.setUid(account.getUid());
         result.setToken(TokenHelper.createToken(account.getUid()));
         return result;

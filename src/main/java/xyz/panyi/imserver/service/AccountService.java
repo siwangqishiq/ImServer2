@@ -2,8 +2,7 @@ package xyz.panyi.imserver.service;
 
 import org.springframework.stereotype.Service;
 import xyz.panyi.imserver.model.Account;
-import xyz.panyi.imserver.model.LoginResp;
-import xyz.panyi.imserver.model.Resp;
+import xyz.panyi.imserver.model.LoginHttpResp;
 
 @Service
 public interface AccountService {
@@ -22,5 +21,5 @@ public interface AccountService {
      * @param account
      * @return
      */
-    LoginResp buildLoginResp(Account account);
+    LoginHttpResp buildLoginResp(Account account);
 }

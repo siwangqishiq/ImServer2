@@ -3,7 +3,7 @@ package xyz.panyi.imserver.model;
 /**
  * 登录 返回结果
  */
-public class LoginResp {
+public class LoginHttpResp {
     private long uid;
     private String token;
 

@@ -4,14 +4,13 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import io.netty.util.internal.StringUtil;
-import xyz.panyi.imserver.config.Config;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC256;
-import static xyz.panyi.imserver.config.Config.ACCOUNT_SCRECT;
+import static xyz.panyi.imserver.config.Config.ACCOUNT_SECRECT;
 
 /**
  * token 签发 及解码
@@ -21,7 +20,7 @@ public class TokenHelper {
 
     private static JWTVerifier verifier;
     static {
-        verifier = JWT.require(HMAC256(ACCOUNT_SCRECT)).build();
+        verifier = JWT.require(HMAC256(ACCOUNT_SECRECT)).build();
     }
 
     private static final String KEY_UID = "_uid";
@@ -35,7 +34,7 @@ public class TokenHelper {
         String token = null;
         token = JWT.create().withHeader(headMap)
                 .withExpiresAt(new Date(System.currentTimeMillis() + ACCOUNT_TOKEN_EXPIRE_TIME))
-                .sign(HMAC256(ACCOUNT_SCRECT));
+                .sign(HMAC256(ACCOUNT_SECRECT));
         return token;
     }
 

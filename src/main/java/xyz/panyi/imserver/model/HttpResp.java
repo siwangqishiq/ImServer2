@@ -1,6 +1,6 @@
 package xyz.panyi.imserver.model;
 
-public class Resp<T> {
+public class HttpResp<T> {
     public static class Codes{
         public static final int SUCCESS = 200;
         public static final int ERROR = 500;
@@ -10,27 +10,27 @@ public class Resp<T> {
     private String msg;
     private T data;
 
-    public static Resp<String> genError( String message){
-        Resp<String> resp = new Resp<String>(Codes.ERROR , message);
-        return resp;
+    public static HttpResp<String> genError(String message){
+        HttpResp<String> httpResp = new HttpResp<String>(Codes.ERROR , message);
+        return httpResp;
     }
 
-    public static <T> Resp<T> genResp( T data){
-        Resp<T> resp = new Resp<T>(Codes.SUCCESS );
-        resp.setData(data);
-        return resp;
+    public static <T> HttpResp<T> genResp(T data){
+        HttpResp<T> httpResp = new HttpResp<T>(Codes.SUCCESS );
+        httpResp.setData(data);
+        return httpResp;
     }
 
-    public Resp(int code) {
+    public HttpResp(int code) {
         this.code = code;
     }
 
-    public Resp(int code, String msg) {
+    public HttpResp(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public Resp(int code, String msg, T data) {
+    public HttpResp(int code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
